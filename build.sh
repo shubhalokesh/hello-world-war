@@ -4,5 +4,5 @@ then
 rm -rf *
 fi
 git clone https://github.com/shubhalokesh/hello-world-war.git
-cd hello-warld-war
+cd hello-world-war
 mvn clean package
