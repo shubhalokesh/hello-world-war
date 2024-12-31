@@ -7,7 +7,7 @@ parameters {
     stages {
         stage('checkout') {
             steps {
-                sh 'rm -rf hello-world-war
+                sh 'rm -rf hello-world-war'
                 sh 'git clone https://github.com/shrikantashetty/hello-world-war.git'
             }
         } 
