@@ -3,7 +3,7 @@ parameters {
         string(name: 'cmd', defaultValue: 'package', description: 'Who should I say hello to?')
         choice(name: 'ch', choices: ['One', 'Two', 'Three'], description: 'Pick something')
     }
-    agent any {
+    agent any 
     stages {
         stage('checkout') {
             steps {
@@ -19,4 +19,4 @@ parameters {
         }
     }
 }
-}
+
