@@ -21,14 +21,14 @@ pipeline {
     }
 post {
     success {
-        emailext subject: "Jenkins Job '${env.JOB_NAME}' Success",
-                  body: "The Jenkins job '${env.JOB_NAME}' completed successfully. Build URL: ${env.BUILD_URL}",
-                  to: "shettyshrikanta@gmail.com"
+        mail to: "shettyshrikanta@gmail.com",
+             subject: "Jenkins Job Success",
+             body: "The Jenkins job completed successfully."
     }
     failure {
-        emailext subject: "Jenkins Job '${env.JOB_NAME}' Failed",
-                  body: "The Jenkins job '${env.JOB_NAME}' failed. Check the logs for details. Build URL: ${env.BUILD_URL}",
-                  to: "shettyshrikanta@gmail.com"
+        mail to: "shettyshrikanta@gmail.com",
+             subject: "Jenkins Job Failed",
+             body: "The Jenkins job failed. Check the logs for details."
     }
 }
 }
