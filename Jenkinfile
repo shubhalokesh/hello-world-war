@@ -1,6 +1,6 @@
 pipeline {
 parameters{
-string(name: 'cmd', defaultvalue: 'package', description: 'Who should I say hello to?')
+string(name: 'cmd', defaultValue: 'package', description: 'Who should I say hello to?')
 
 choice(name: 'ch', choices: ['One', 'Two', 'Three'], description: 'Pick something')
 }
@@ -9,7 +9,7 @@ stages
 {
 stage ('checkout') {
 steps {
-sh 'rm -rf hello-world-war'|
+sh 'rm -rf hello-world-war'
 sh 'git clone https://github.com/shubhalokesh/hello-world-war/'
 }
 }
