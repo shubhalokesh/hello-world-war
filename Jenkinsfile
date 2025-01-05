@@ -19,7 +19,7 @@ pipeline {
                       -Dsonar.sources=/var/lib/jenkins/workspace/sonarproject
                       -Dsonar.exclusions=**/*.java 
                       -Dsonar.host.url=https://sonarcloud.io \
-                      -Dsonar.login=98a6275f0042a5ed6d227ff971509495bbd417dc
+                      -Dsonar.login=$SONAR_TOKEN
                     '''
                 }
             }
