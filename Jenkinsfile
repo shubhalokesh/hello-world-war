@@ -36,7 +36,7 @@ pipeline {
         //add your own sonar account details  
         stage('SonarCloud Analysis') {
             steps {
-                withSonarQubeEnv('shubha') {
+                withSonarQubeEnv('SonarCloud') {
                     sh '''
                     mvn sonar:sonar \
                       -Dsonar.projectKey=shubhalokesh_hello-world-war \
