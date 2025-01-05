@@ -5,7 +5,7 @@ pipeline {
      //   jdk 'JDK11'         // Specify your JDK version
     //}
     environment {
-        SONAR_TOKEN = credentials('SONAR_TOKEN') // Store token in Jenkins credentials
+        SONAR_TOKEN = credentials('sonarcloud-token') // Store token in Jenkins credentials
     }
     
        stages 
@@ -13,7 +13,7 @@ pipeline {
         stage('checkout') {             
             steps {
                 sh 'rm -rf hello-world-war'
-                sh 'git clone https://github.com/AkshathaMR/hello-world-war/'
+                sh 'git clone https://github.com/shubhalokesh/hello-world-war/'
             }
         }
          stage('build') { 
@@ -36,11 +36,11 @@ pipeline {
         //add your own sonar account details  
         stage('SonarCloud Analysis') {
             steps {
-                withSonarQubeEnv('SonarCloud') {
+                withSonarQubeEnv('shubha') {
                     sh '''
                     mvn sonar:sonar \
-                      -Dsonar.projectKey=akshatha111_project1 \
-                      -Dsonar.organization=akshatha111 \
+                      -Dsonar.projectKey=shubhalokesh_hello-world-war \
+                      -Dsonar.organization=shubha123 \
                       -Dsonar.host.url=https://sonarcloud.io \
                       -Dsonar.login=$SONAR_TOKEN
                     '''
