@@ -1,23 +1,46 @@
 pipeline {
     agent any
+    //tools {
+     //   maven 'Maven-3.4.0' // Specify your Maven version if using Maven
+     //   jdk 'JDK11'         // Specify your JDK version
+    //}
     environment {
-        SONAR_TOKEN = 98a6275f0042a5ed6d227ff971509495bbd417dc
+        SONAR_TOKEN = credentials('SONAR_TOKEN') // Store token in Jenkins credentials
     }
-    stages {
+    
+       stages 
+    {
+        stage('checkout') {             
+            steps {
+                sh 'rm -rf hello-world-war'
+                sh 'git clone https://github.com/AkshathaMR/hello-world-war/'
+            }
+        }
+         stage('build') { 
+            steps {
+                sh 'cd hello-world-war'
+                sh 'mvn clean package'
+            }
+        }
+
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
+        stage('Build') {
+            steps {
+                sh 'mvn clean install' // Adjust for your build tool
+            }
+        }
+        //add your own sonar account details  
         stage('SonarCloud Analysis') {
             steps {
-                withSonarQubeEnv('shubha') { // Replace 'SonarCloud' with your configured name
+                withSonarQubeEnv('SonarCloud') {
                     sh '''
-                    sonar-scanner \
-                      -Dsonar.projectKey=shubhalokesh_hello-world-war
-                      -Dsonar.organization=shubha123
-                      -Dsonar.sources=/var/lib/jenkins/workspace/sonarproject
-                      -Dsonar.exclusions=**/*.java 
+                    mvn sonar:sonar \
+                      -Dsonar.projectKey=akshatha111_project1 \
+                      -Dsonar.organization=akshatha111 \
                       -Dsonar.host.url=https://sonarcloud.io \
                       -Dsonar.login=$SONAR_TOKEN
                     '''
@@ -27,11 +50,12 @@ pipeline {
         stage('Quality Gate') {
             steps {
                 script {
-                    timeout(time: 1, unit: 'MINUTES') {
-                        waitForQualityGate abortPipeline: true
+                    def qg = waitForQualityGate()
+                    if (qg.status != 'OK') {
+                        error "Pipeline aborted due to quality gate failure: ${qg.status}"
                     }
                 }
             }
         }
     }
-}
+    }
