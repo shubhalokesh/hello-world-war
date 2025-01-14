@@ -9,7 +9,7 @@
 	    <repository>
 	        <id>hello-world-war</id>
 	        <name>a0ljrs4qtn9sm-artifactory-primary-0-releases</name>
-	        <url>https://trialn9a7h3.jfrog.io/artifactory/hello-world-war-libs-release</url>
+	        <url>http://3.110.77.12:8081/artifactory/hello-world-war-libs-release</url>
 	    </repository>
   	</distributionManagement>
 	<name>Hello World Web Application Repository</name>
