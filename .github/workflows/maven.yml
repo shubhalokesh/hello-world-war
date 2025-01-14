@@ -6,7 +6,7 @@ name: Build, Deploy, and Upload Artifacts
 on:
   push:
     branches:
-      - '**'
+      - master
   pull_request:
     branches:
       - master
