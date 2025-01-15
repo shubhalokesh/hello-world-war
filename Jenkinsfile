@@ -1,16 +1,19 @@
 pipeline {
     agent any
+    environment {
+       Sample_creds = credentials('Jfrog')
+    }
        stages 
     {
         stage('checkout') {             
             steps {
                 sh """
                 #!/bin/bash
-                sleep 6
+                sleep 60
                 sudo su
                 cd /opt/apache-tomcat-10.1.34/webapps
                 ls
-                curl -L -u "admin:cmVmdGtuOjAxOjE3Njg0NTAwMTc6Q3RmU2JUVmxqMEg3ckIxVUpIU3lvWHp3dHZK" -O "http://13.203.76.219:8082/artifactory/hello_world_war-libs-release/com/efsavage/hello-world-war/1.0.14/hello-world-war-1.0.14.war"
+                curl -L -u "Sample_creds_USR:Sample_creds_PWD" -O "http://13.203.76.219:8082/artifactory/hello_world_war-libs-release/com/efsavage/hello-world-war/1.0.14/hello-world-war-1.0.14.war"
                 pwd
                 cd /opt/apache-tomcat-10.1.34/bin
                 ./shutdown.sh
@@ -22,6 +25,7 @@ pipeline {
                 ./startup.sh
                 sleep 3
                 """ 
+
             }
         }
          
