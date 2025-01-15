@@ -22,7 +22,6 @@ pipeline {
                 ./startup.sh
                 sleep 3
                 """ 
-
             }
         }
          
