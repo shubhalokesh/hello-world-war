@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh """
                 #!/bin/bash
-                sleep 6
+                sleep 5
                 sudo su
                 cd /opt/apache-tomcat-10.1.34/webapps
                 ls
