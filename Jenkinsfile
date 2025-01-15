@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-       Sample_creds = credentials('Jfrog')
+       Sample_creds = credentials('Demo_test_crd')
     }
        stages 
     {
