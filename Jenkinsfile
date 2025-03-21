@@ -57,7 +57,7 @@ pipeline {
                 script {
                     // Pull and run the Docker container on the target environment (could be a remote server)
                     sh """
-                    docker run -d -p 8080:8080 ${DOCKER_HUB_REPO}:${IMAGE_TAG}
+                    docker run -d -p 8081:8080 ${DOCKER_HUB_REPO}:${IMAGE_TAG}
                     """
                 }
             }
