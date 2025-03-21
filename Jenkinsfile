@@ -13,7 +13,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from your repository
-                git 'https://github.com/yourusername/yourproject.git' // Replace with your repository URL
+                git 'https://github.com/shubhalokesh/hello-world-war.git' // Replace with your repository URL
             }
         }
 
